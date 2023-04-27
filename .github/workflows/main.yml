@@ -43,8 +43,8 @@ jobs:
   #    run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
  
       
-  #  - name: Git SHA
-  #   run: docker tag mayr08/demo:latest mayr08/demo:${{ github.sha }}
+    - name: Git SHA
+      run: docker tag mayr08/demo:latest mayr08/demo:${{ github.sha }}
     
     - name: Push Docker Image
       run: docker push mayr08/demo:${{ github.sha }}
