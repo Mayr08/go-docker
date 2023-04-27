@@ -47,11 +47,11 @@ jobs:
       run: echo "$secrets.DOCKER_USERNAME"
       
     - name: username3
-      run: echo "$GIT_SHA"
+      run: echo "${{ GIT_SHA }}"
       
     - name: Git SHA
-      run: docker tag mayr08/demo:latest mayr08/demo:github.sha
+      run: docker tag mayr08/demo:latest mayr08/demo:${{ github.sha }}
       
     - name: Push Docker Image
-      run: docker push mayr08/demo:github.sha
+      run: docker push mayr08/demo:${{ github.sha }}
    
