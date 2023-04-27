@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
           
 
-    - name: login to DockerHub
+    - name: login 
      # run: echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
       run: echo "$REGISTRY_PASSWORD"
       
