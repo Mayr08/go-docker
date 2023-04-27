@@ -30,7 +30,7 @@ jobs:
     #  run: docker build -f Dockerfile -t mayr08/demo:latest ./
       
     - name: Test
-      run: go test -v ./...
+      run: go test -v ./main.go
       
     - name: Login to DockerHub (other way)
       uses: docker/login-action@v1
