@@ -44,9 +44,7 @@ jobs:
         context: .
         push: true
         dockerfile: Dockerfile
-        tags: |
-          mayr08/demo:${{ github.sha }}
-          mayr08/demo:latest
+        tags: mayr08/demo:${{ github.sha }}
            
   # other way to login          
   #  - name: Login to DockerHub
