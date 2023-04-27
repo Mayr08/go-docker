@@ -29,6 +29,9 @@ jobs:
     - name: Test
       run: go test -v ./...
       
+    - name: login to DockerHub
+      run: echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
+      
     - name: Push Docker Image
       run: docker push mayr08/demo:latest
    
