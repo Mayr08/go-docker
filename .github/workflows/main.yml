@@ -6,7 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch: #For manual workflow
-
+  
+env:
+  GIT_SHA: "$(git rev-parse --short HEAD)"
+  
 jobs:
 
   build:
@@ -36,9 +39,18 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
           
 
-    - name: login 
+    - name: username 
      # run: echo "$REGISTRY_PASSWORD" | docker login --username $REGISTRY_USER --password-stdin
-      run: echo "$REGISTRY_PASSWORD"
+      run: echo "$DOCKER_USERNAME"
+      
+    - name: username2
+      run: echo "$secrets.DOCKER_USERNAME"
+      
+    - name: username3
+      run: echo "$GIT_SHA"
+      
+    - name: Git SHA
+      run: docker tag mayr08/demo:latest mayr08/demo:github.sha
       
     - name: Push Docker Image
       run: docker push mayr08/demo:latest
