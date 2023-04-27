@@ -53,5 +53,5 @@ jobs:
       run: docker tag mayr08/demo:latest mayr08/demo:github.sha
       
     - name: Push Docker Image
-      run: docker push mayr08/demo:latest
+      run: docker push mayr08/demo:$GIT_SHA
    
