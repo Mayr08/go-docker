@@ -55,7 +55,7 @@ jobs:
         context: .
         push: true
         dockerfile: Dockerfile
-        tags: ${{ mayr08/demo:${{ github.sha }}
+        tags: mayr08/demo:${{ github.sha }}
 
 
 
