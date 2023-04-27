@@ -22,9 +22,9 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    #- name: Test
-     # run: go test -v ./...
-
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build -f Dockerfile -t mayr08/demo:latest ./
+
+    - name: Test
+      run: go test -v ./...
