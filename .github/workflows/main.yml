@@ -7,9 +7,6 @@ on:
     branches: [ "main" ]
   workflow_dispatch: #For manual workflow
   
-env:
-  GIT_SHA: "$(git rev-parse --short HEAD)"
-  
 jobs:
 
   build:
@@ -24,10 +21,6 @@ jobs:
 
     - name: Build
       run: go build -v ./...
-      
-    #- uses: actions/checkout@v3
-    #- name: Build the Docker image
-    #  run: docker build -f Dockerfile -t mayr08/demo:latest ./
       
     - name: Test
       run: go test -v ./...
@@ -44,8 +37,13 @@ jobs:
         context: .
         push: true
         dockerfile: Dockerfile
-        tags: mayr08/demo:${{ github.sha }}
-           
+        tags: ${{ secrets.DOCKER_USERNAME }}/demo:${{ github.sha }}
+       
+  #other way to build Docker Image
+  # - uses: actions/checkout@v3
+  # - name: Build the Docker image
+  #   run: docker build -f Dockerfile -t mayr08/demo:latest ./
+      
   # other way to login          
   #  - name: Login to DockerHub
   #    run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
