@@ -38,6 +38,14 @@ jobs:
         push: true
         dockerfile: Dockerfile
         tags: ${{ secrets.DOCKER_USERNAME }}/demo:${{ github.sha }}
+   
+    - name: Trivy Scan for Docker Image
+      uses: aquasecurity/trivy-action@0.10.0
+      with:
+        image-ref: '${{ secrets.DOCKER_USERNAME }}/demo:${{ github.sha }}'
+        exit-code: '1'
+        severity: 'CRITICAL,HIGH'
+      
        
   #other way to build Docker Image
   # - uses: actions/checkout@v3
