@@ -46,6 +46,14 @@ jobs:
         image-ref: '${{ secrets.DOCKER_USERNAME }}/demo:${{ github.sha }}'
         exit-code: '1'
         severity: 'CRITICAL,HIGH'
+        
+    - name: Trivy Scan for IaC
+      uses: aquasecurity/trivy-action@0.10.0
+      continue-on-error: true
+      with:
+        scan-type: 'config'
+        exit-code: '1'
+        severity: 'CRITICAL,HIGH'
       
        
   #other way to build Docker Image
